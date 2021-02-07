@@ -11,7 +11,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'description'=>$faker->realText(),
         'is_promoted'=>$faker->boolean(),
         'ig_id'=>$faker->uuid,
-        'user_id'=>$faker->randomNumber(),
+        'user_id'=>$faker->numberBetween(1,20),
         'ad_ig_id'=>$faker->uuid,
     ];
 });
