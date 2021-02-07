@@ -8,6 +8,10 @@ use Faker\Generator as Faker;
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'image'=>$faker->url(),
-        'description'=>$faker->text(),
+        'description'=>$faker->realText(),
+        'is_promoted'=>$faker->boolean(),
+        'ig_id'=>$faker->uuid,
+        'user_id'=>$faker->randomNumber(),
+        'ad_ig_id'=>$faker->uuid,
     ];
 });
