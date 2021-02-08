@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProfileRequest;
 use App\Http\Resources\IndexProfileResource;
 use App\Services\ProfileService;
 use Illuminate\Http\Request;
@@ -42,9 +43,9 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProfileRequest $request)
     {
-        //
+        return $this->service->store($request->validated());
     }
 
     /**
