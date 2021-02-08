@@ -12,6 +12,7 @@ class PostRepository
     {
         return Post::all()->toArray();
 
+
     }
     public function show($id)
     {
