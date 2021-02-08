@@ -21,4 +21,14 @@ class UserService
             return $e;
         }
     }
+
+    public function logout()
+    {
+        try {
+            return auth()->logout();
+        } catch (\Exception $e)
+        {
+            return $e;
+        }
+    }
 }

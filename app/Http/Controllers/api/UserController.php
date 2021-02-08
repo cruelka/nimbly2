@@ -99,4 +99,9 @@ class UserController extends Controller
     {
         return response($this->service->login($request->validated()));
     }
+
+    public function logout()
+    {
+        return response($this->service->logout());
+    }
 }
