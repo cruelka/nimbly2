@@ -8,7 +8,7 @@ class UserService
 {
     public function index()
     {
-        return User::all()->toArray();
+        return User::with('profile')->get()->toArray();
     }
 
     public function login($credantials)

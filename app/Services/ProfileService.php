@@ -41,6 +41,10 @@ class ProfileService
     }
     public function store($data)
     {
+        if($data['photo']->isValid())
+        {
+            $data['photo']=$data['photo']->store('avatars', 'public');
+        }
         return $this->repository->store($data);
     }
     public function destroy($id)
