@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Services\PostService;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -24,7 +23,6 @@ class PostController extends Controller
      */
     public function index()
     {
-
         return $this->service->index();
     }
 
@@ -74,7 +72,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Up  $request
+     * @param  UpdatePostRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
