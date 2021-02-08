@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\IndexUserResource;
-use App\Services\UserService;
+use App\Http\Resources\IndexProfileResource;
+use App\Services\ProfileService;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
     private $service;
 
-    public function __construct(UserService $service)
+    public function __construct(ProfileService $service)
     {
         $this->service = $service;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return response(new IndexUserResource($this->service->index()));
+        return response(new IndexProfileResource($this->service->index()));
     }
 
     /**

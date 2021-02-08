@@ -4,30 +4,26 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class IndexPostResource extends ResourceCollection
+class IndexProfileResource extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
-     * @param \Illuminate\Http\Request $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
         $output = [];
         foreach ($this->collection['data'] as $item) {
-
-                $output[$item['id']] = [
-                    'image'       => $item['image'],
-                    'description' => $item['description'],
-                    'user'        => [
-                        'general' => [
-                            'id'   => $item['user']['id'],
-                            'name' => $item['user']['name'],
-                        ],
-                        'profile' => [],
-                    ],
-                ];
+            $output[$item['id']] = [
+                'photo'     => $item['photo'],
+                'age'       => $item['age'],
+                'sex'       => $item['sex'],
+                'location'  => $item['location'],
+            ];
         }
+
         $output['paginate'] = [
             'current_page'   => $this->collection['current_page'],
             'first_page_url' => $this->collection['first_page_url'],
