@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
-use App\Http\Resources\IndexPostResource;
-use App\Services\PostService;
+use App\Http\Resources\IndexProfileResource;
+use App\Services\ProfileService;
+use Illuminate\Http\Request;
 
-class PostController extends Controller
+class ProfileController extends Controller
 {
     private $service;
 
-    public function __construct(PostService $service)
+    public function __construct(ProfileService $service)
     {
         $this->service = $service;
     }
@@ -24,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return response(new IndexPostResource($this->service->index()));
+        return response(new IndexProfileResource($this->service->index()));
     }
 
     /**
@@ -43,9 +42,9 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
-        return $this->service->store($request->validated());
+        //
     }
 
     /**
@@ -56,7 +55,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return $this->service->show($id);
+        //
     }
 
     /**
@@ -73,13 +72,13 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdatePostRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePostRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        return $this->service->update($id, $request->validated());
+        //
     }
 
     /**
@@ -90,6 +89,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        return $this->service->destroy($id);
+        //
     }
 }

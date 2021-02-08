@@ -2,20 +2,20 @@
 
 namespace App\Repositories;
 
-use App\Models\Post;
+use App\Models\Profile;
 
 /**
- * Class PostRepository
+ * Class ProfileRepository
  * @package App\Repositories
  */
-class PostRepository
+class ProfileRepository
 {
     /**
      * @return array
      */
     public function index()
     {
-        return Post::with('user')->paginate(5)->toArray();
+        return Profile::with('user')->paginate(5)->toArray();
     }
 
     /**
@@ -24,15 +24,15 @@ class PostRepository
      */
     public function show($id)
     {
-        return Post::find($id);
+        return Profile::find($id);
     }
 
     /**
-     * @param Post $post
+     * @param Profile $post
      * @param array $data
      * @return bool
      */
-    public function update(Post $post, $data)
+    public function update(Profile $post, $data)
     {
         return $post->update($data);
     }
@@ -43,7 +43,7 @@ class PostRepository
      */
     public function store($data)
     {
-        return Post::create($data);
+        return Profile::create($data);
     }
 
     /**
@@ -52,6 +52,7 @@ class PostRepository
      */
     public function destroy($id)
     {
-        return Post::find($id)->delete();
+        return Profile::find($id)->delete();
     }
 }
+

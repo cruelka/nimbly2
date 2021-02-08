@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Profile extends Model
 {
-    protected $hidden = ['created_at', 'updated_at'];
-    protected $guarded = ['id', 'user_id'];
 
     public function user()
     {
