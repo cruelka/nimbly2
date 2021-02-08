@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserLoginRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return $this->service->index();
+        return response($this->service->index());
     }
 
     /**
@@ -88,5 +89,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function login(UserLoginRequest $request)
+    {
+        return response($this->service->login($request->validated()));
+
     }
 }
