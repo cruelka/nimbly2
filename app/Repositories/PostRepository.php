@@ -3,7 +3,6 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Post;
 
 class PostRepository
@@ -11,18 +10,6 @@ class PostRepository
     public function index()
     {
         return Post::all()->toArray();
-
-
-
-
-
-
-
-
-
-
-
-
     }
     public function show($id)
     {

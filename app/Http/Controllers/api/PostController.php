@@ -81,9 +81,6 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, $id)
     {
         return $this->service->update($id, $request->validated());
-
-
-
     }
 
     /**
