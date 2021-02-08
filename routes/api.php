@@ -19,3 +19,4 @@ Route::group(['middleware' => 'auth:api'], function() {
 });
 
 Route::post('/login', 'api\UserController@login')->name('login');
+Route::get('/facebook-login', 'api\UserController@facebookLogin')->name('facebook-login');

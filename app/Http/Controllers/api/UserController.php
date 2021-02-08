@@ -7,10 +7,21 @@ use App\Http\Requests\UserLoginRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers\api
+ */
 class UserController extends Controller
 {
+    /**
+     * @var UserService
+     */
     private $service;
 
+    /**
+     * UserController constructor.
+     * @param UserService $service
+     */
     public function __construct(UserService $service)
     {
         $this->service = $service;
@@ -100,8 +111,17 @@ class UserController extends Controller
         return response($this->service->login($request->validated()));
     }
 
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function logout()
     {
         return response($this->service->logout());
     }
+
+    public function facebookLogin()
+    {
+        //login code comes here
+    }
+
 }
