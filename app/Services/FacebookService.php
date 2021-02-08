@@ -12,9 +12,14 @@ class FacebookService
     {
         $this->repository = $facebookRepository;
     }
-    public function facebook()
-    {
-        return $this->repository->index();
 
+    public function getPages()
+    {
+        return $this->repository->getPages();
+    }
+
+    public function getTopHashtags()
+    {
+        return $this->repository->getTopHashtags();
     }
 }

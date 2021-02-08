@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
+use App\Http\Resources\FacebookPageResource;
 use App\Services\FacebookService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -18,16 +19,14 @@ class UserController extends Controller
      * @var UserService
      */
     private $service;
-    private $facebook;
 
     /**
      * UserController constructor.
      * @param UserService $service
      */
-    public function __construct(UserService $service, FacebookService $facebookService)
+    public function __construct(UserService $service)
     {
         $this->service = $service;
-        $this->facebook = $facebookService;
     }
     /**
      * Display a listing of the resource.
@@ -124,7 +123,6 @@ class UserController extends Controller
 
     public function facebookLogin()
     {
-       return $this->facebook->facebook();
     }
 
 

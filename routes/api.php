@@ -21,4 +21,10 @@ Route::group(['middleware' => 'auth:api'], function() {
 });
 
 Route::post('/login', 'api\UserController@login')->name('login');
+
+
+//@TODO add routes under auth middleware group
 Route::get('/facebook-login', 'api\UserController@facebookLogin')->name('facebook-login');
+Route::get('/facebook-pages', 'api\FacebookController@getPages')->name('facebook-pages');
+Route::get('/facebook-posts', 'api\FacebookController@getTopHashtags')->name('facebook-posts');
+

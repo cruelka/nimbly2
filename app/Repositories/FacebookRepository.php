@@ -2,28 +2,43 @@
 
 namespace App\Repositories;
 
+use GuzzleHttp\Client;
 
 class FacebookRepository
 {
-    private $facebook;
+    private $client;
 
-
-    public function __construct()
+    public function __construct(Client $client)
     {
-        $this->facebook = [
-            'app_id' => env('FACEBOOK_APP_ID'),
-            'app_secret' => env('FACEBOOK_APP_SECRET'),
-            'default_graph_version' => 'v9.0',
-        ];
+        $this->client = new $client(
+            [
+                'base_uri' => env('FACEBOOK_API_URL').env('FACEBOOK_API_VERSION'),
+                'headers'  => [
+                    'Authorization' => 'Bearer '.env('TOKEN'),
+                ],
+            ]
+        );
     }
 
-    public function index()
+    public function getPages()
     {
         try {
-            $response = $this->facebook->get('/me?fields=id,name', env('TOKEN2'));
-        } catch(\Exception $e) {
+            $response = $this->client->get('me/accounts?fields=name,category_list,instagram_business_account{name}');
+        } catch (\Exception $e) {
             return $e->getMessage();
         }
 
+        return json_decode($response->getBody(),  true);
+    }
+
+    public function getTopHashtags()
+    {
+        try {
+            $response = $this->client->get('17841400192782903/media?fields=caption,id,ig_id');
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return json_decode($response->getBody(),  true);
     }
 }
