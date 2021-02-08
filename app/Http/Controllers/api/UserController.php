@@ -3,14 +3,25 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\IndexUserResource;
+use App\Http\Requests\UserLoginRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers\api
+ */
 class UserController extends Controller
 {
+    /**
+     * @var UserService
+     */
     private $service;
 
+    /**
+     * UserController constructor.
+     * @param UserService $service
+     */
     public function __construct(UserService $service)
     {
         $this->service = $service;
@@ -22,7 +33,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return response(new IndexUserResource($this->service->index()));
+        return response($this->service->index());
     }
 
     /**
@@ -90,4 +101,27 @@ class UserController extends Controller
     {
         //
     }
+
+    /**
+     * @param UserLoginRequest $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function login(UserLoginRequest $request)
+    {
+        return response($this->service->login($request->validated()));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function logout()
+    {
+        return response($this->service->logout());
+    }
+
+    public function facebookLogin()
+    {
+        //login code comes here
+    }
+
 }
