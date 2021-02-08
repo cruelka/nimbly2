@@ -91,9 +91,12 @@ class UserController extends Controller
         //
     }
 
+    /**
+     * @param UserLoginRequest $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function login(UserLoginRequest $request)
     {
         return response($this->service->login($request->validated()));
-
     }
 }
