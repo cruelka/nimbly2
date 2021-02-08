@@ -15,7 +15,7 @@ class PostRepository
      */
     public function index()
     {
-        return Post::all()->toArray();
+        return Post::with('user')->paginate(5)->toArray();
     }
 
     /**

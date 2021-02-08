@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Http\Resources\IndexPostResource;
 use App\Services\PostService;
 
 class PostController extends Controller
@@ -23,7 +24,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return $this->service->index();
+        return response(new IndexPostResource($this->service->index()));
     }
 
     /**
