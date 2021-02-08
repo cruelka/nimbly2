@@ -29,7 +29,8 @@ class AddColumnsToPostTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->dropForeign('user_id');
+            $table->dropColumn(['ig_id', 'ad_ig_id', 'is_promoted']);
         });
     }
 }
