@@ -30,7 +30,7 @@ class CreateHashtagsTable extends Migration
     {
         Schema::table('hashtags', function (Blueprint $table) {
             $table->dropForeign('ig_user_id');
-            $table->dropColumn(['ig_user_id', 'hashtag_id']);
+            $table->dropColumn(['ig_user_id', 'hashtag_id');
         });
     }
 }
