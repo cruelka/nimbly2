@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class UserHasHashtag extends Model
 {
-    protected $hidden = ['created_at', 'updated_at'];
-    protected $guarded = [];
+    public $timestamps = false;
 
     public function user()
     {

@@ -19,6 +19,8 @@ use Illuminate\Support\Str;
 
 $factory->define(Profile::class, function (Faker $faker) {
     return [
+        'id' => $faker->numberBetween(1, 1000),
+        'user_id' => $faker ->numberBetween(1, 20),
         'photo' => $faker->imageUrl(),
         'age' => $faker->numberBetween(0, 100),
         'sex' => $faker->boolean,

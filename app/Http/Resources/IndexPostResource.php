@@ -15,7 +15,7 @@ class IndexPostResource extends ResourceCollection
     {
         $output = [];
         foreach ($this->collection['data'] as $item) {
-
+                //dd($item);
                 $output[$item['id']] = [
                     'image'       => $item['image'],
                     'description' => $item['description'],
