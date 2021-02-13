@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePostRequest extends FormRequest
+class UserLoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UpdatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'=>'required|max:255',
-            'description'=>'nullable|string',
+            'email' => 'required|string|exists:users,email',
+            'password'=> 'string|required',
         ];
     }
 }
