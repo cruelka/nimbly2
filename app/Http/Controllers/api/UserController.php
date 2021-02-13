@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserLoginRequest;
+use App\Http\Requests\User\UserLoginRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
