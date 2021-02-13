@@ -4,10 +4,21 @@ namespace App\Repositories;
 
 use GuzzleHttp\Client;
 
+/**
+ * Class FacebookRepository
+ * @package App\Repositories
+ */
 class FacebookRepository
 {
+    /**
+     * @var
+     */
     private $client;
 
+    /**
+     * FacebookRepository constructor.
+     * @param Client $client
+     */
     public function __construct(Client $client)
     {
         $this->client = new $client(
@@ -20,6 +31,9 @@ class FacebookRepository
         );
     }
 
+    /**
+     * @return mixed|string
+     */
     public function getPages()
     {
         try {
@@ -28,9 +42,12 @@ class FacebookRepository
             return $e->getMessage();
         }
 
-        return json_decode($response->getBody(),  true);
+        return json_decode($response->getBody(), true);
     }
 
+    /**
+     * @return mixed|string
+     */
     public function getTopHashtags()
     {
         try {
@@ -39,6 +56,21 @@ class FacebookRepository
             return $e->getMessage();
         }
 
-        return json_decode($response->getBody(),  true);
+        return json_decode($response->getBody(), true);
+    }
+
+    /**
+     * @param $name
+     * @return mixed|string
+     */
+    public function queryHashtag($name)
+    {
+        try {
+            $response = $this->client->get('hashtag_search?user_id='.env('FB_USER_ID').'&q='.$name);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return json_decode($response->getBody(), true);
     }
 }

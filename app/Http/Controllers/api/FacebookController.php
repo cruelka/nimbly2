@@ -5,8 +5,8 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FacebookPageResource;
 use App\Http\Resources\FacebookPostResource;
+use App\Http\Resources\HashtagsWithIdResource;
 use App\Services\FacebookService;
-use Illuminate\Http\Request;
 
 class FacebookController extends Controller
 {
@@ -25,5 +25,10 @@ class FacebookController extends Controller
     public function getTopHashtags()
     {
         return response(new FacebookPostResource($this->facebook->getTopHashtags()));
+    }
+
+    public function getHashtagIds(array $hashtags)
+    {
+        return response(new HashtagsWithIdResource(($this->facebook->getHashtagIds($hashtags))));
     }
 }
