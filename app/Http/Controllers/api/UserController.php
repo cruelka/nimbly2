@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserLoginRequest;
+use App\Http\Resources\FacebookPageResource;
+use App\Services\FacebookService;
 use App\Services\UserService;
-use Illuminate\Http\Request;
 
 /**
  * Class UserController
@@ -121,7 +121,7 @@ class UserController extends Controller
 
     public function facebookLogin()
     {
-        //login code comes here
     }
+
 
 }
