@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Hashtag;
 use App\Repositories\FacebookRepository;
 
 /**
@@ -43,10 +44,20 @@ class FacebookService
     /**
      * @param array $hashtags
      */
-    public function getHashtagsIds(array $hashtags)
+    public function getHashtagsIds($data)
     {
         $output = [];
+        foreach ($data['hashtags'] as $hashtag) {
+            $model = Hashtag::where('name', $hashtag['name'])->get();
+            if ($model->isEmpty()) {
+                $id = $this->repository->queryHashtag($hashtag['name']);
+                $output []= [
+                  'name' => $hashtag['name'],
+                  'ig_id'=> $id['id']
+                ];
+            }
 
-        dd($hashtags);
+        }
+        return $output;
     }
 }

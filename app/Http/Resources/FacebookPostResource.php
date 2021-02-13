@@ -39,7 +39,7 @@ class FacebookPostResource extends ResourceCollection
             function ($hashtag) {
                 return $hashtag['q'];
             }
-        )->values()->take(10);
+        )->values()->take(20);
 
         return $output;
     }

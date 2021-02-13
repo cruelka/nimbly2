@@ -66,11 +66,11 @@ class FacebookRepository
     public function queryHashtag($name)
     {
         try {
-            $response = $this->client->get('hashtag_search?user_id='.env('FB_USER_ID').'&q='.$name);
+            $response = $this->client->get('ig_hashtag_search?user_id='.env('FB_USER_ID').'&q='.$name);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
 
-        return json_decode($response->getBody(), true);
+        return json_decode($response->getBody(), true)['data'][0];
     }
 }

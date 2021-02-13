@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Hashtag\HashTagGetIdsRequest;
 use App\Http\Resources\FacebookPageResource;
 use App\Http\Resources\FacebookPostResource;
 use App\Http\Resources\HashtagsWithIdResource;
 use App\Services\FacebookService;
+use Illuminate\Http\Request;
 
 class FacebookController extends Controller
 {
@@ -27,8 +29,8 @@ class FacebookController extends Controller
         return response(new FacebookPostResource($this->facebook->getTopHashtags()));
     }
 
-    public function getHashtagIds(array $hashtags)
+    public function getHashtagsIds(HashTagGetIdsRequest $request)
     {
-        return response(new HashtagsWithIdResource(($this->facebook->getHashtagIds($hashtags))));
+        return response(new HashtagsWithIdResource(($this->facebook->getHashtagsIds($request->validated()))));
     }
 }

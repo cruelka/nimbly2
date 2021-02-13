@@ -28,3 +28,4 @@ Route::get('/facebook-login', 'api\UserController@facebookLogin')->name('faceboo
 Route::get('/facebook-pages', 'api\FacebookController@getPages')->name('facebook-pages');
 Route::get('/facebook-posts', 'api\FacebookController@getTopHashtags')->name('facebook-posts');
 
+Route::post('/facebook-hashtags', 'api\FacebookController@getHashtagsIds')->name('facebook-posts');
