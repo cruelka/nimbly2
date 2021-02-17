@@ -55,7 +55,12 @@ class FacebookService
                   'name' => $hashtag['name'],
                   'ig_id'=> $id['id']
                 ];
+                break;
             }
+            $output []= [
+                'name' => $hashtag['name'],
+                'ig_id'=> $id['id']
+            ];
 
         }
         return $output;

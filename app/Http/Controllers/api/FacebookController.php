@@ -9,6 +9,7 @@ use App\Http\Resources\FacebookPostResource;
 use App\Http\Resources\HashtagsWithIdResource;
 use App\Services\FacebookService;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\File\File;
 
 class FacebookController extends Controller
 {
@@ -16,6 +17,10 @@ class FacebookController extends Controller
 
     public function __construct(FacebookService $facebookService)
     {
+        $image = 'http://172.27.2.160:9000/test/c10/c108a7d1814a9e8929bfbf46dcf4f761.jpg';
+
+        dd(file_get_contents($image)->getClientOriginalName());
+
         $this->facebook = $facebookService;
     }
 
